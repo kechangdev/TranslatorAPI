@@ -1,8 +1,8 @@
 package main
 
-import "TranslatorAPI"
+import "TranslatorAPI/tests"
 
 func main() {
-	TranslatorAPI.Translator("Youdao", "Hello", "auto", "zh-CHS")
+	tests.TestyoudaoAPI()
 	//fmt.Println(result.Translation)
 }
