@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-func YoudaoSendRequests(word string, sourceLang string, targetLang string) (models.YoudaoResponse, error) {
+func YoudaoSendRequests(word, sourceLang, targetLang string) (models.YoudaoResponse, error) {
 	// 获取配置文件路径
 	configPath := "./config/config.json"
 	absPath, err := filepath.Abs(configPath)

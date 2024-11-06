@@ -4,15 +4,14 @@ import (
 	"TranslatorAPI/models"
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
-func caiyunSendRequests() {
+func CaiyunSendRequests(word, sourceLang, targetLang string) (models.CaiyunResponse, error) {
 	client := &http.Client{}
-	request := models.CaiyunRequest{TransType: "en2zh", Source: "good"}
+	request := models.CaiyunRequest{TransType: "en2zh", Source: word}
 	buf, err := json.Marshal(request)
 	if err != nil {
 		log.Fatal(err)
@@ -49,10 +48,13 @@ func caiyunSendRequests() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	if resp.StatusCode != 200 {
+		log.Fatal("bad StatusCode:", resp.StatusCode, "body", string(bodyText))
+	}
 	var dictResponse models.CaiyunResponse
 	err = json.Unmarshal(bodyText, &dictResponse)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%#v\n", dictResponse)
+	return dictResponse, nil
 }
