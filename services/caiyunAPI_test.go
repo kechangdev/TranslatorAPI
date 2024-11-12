@@ -1,4 +1,4 @@
-package tests
+package services
 
 import (
 	"TranslatorAPI"
@@ -6,10 +6,8 @@ import (
 	"testing"
 )
 
-var word = "test"
-
 func TestCaiyunAPI(t *testing.T) {
-	resq, err := TranslatorAPI.Translator("Caiyun", word, "ZN", "US")
+	resq, err := TranslatorAPI.Done("Caiyun", "test", "ZN", "US")
 	if err != nil {
 		t.Error(err)
 	}

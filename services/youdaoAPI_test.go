@@ -1,4 +1,4 @@
-package tests
+package services
 
 import (
 	"TranslatorAPI"
@@ -7,7 +7,7 @@ import (
 )
 
 func TestYoudaoAPI(t *testing.T) {
-	resq, err := TranslatorAPI.Translator("Youdao", "test", "auto", "zh-CHS")
+	resq, err := TranslatorAPI.Done("Youdao", "test", "auto", "zh-CHS")
 	if err != nil {
 		return
 	}

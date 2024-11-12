@@ -16,7 +16,7 @@ type TResponse struct {
 	SoundMark SoundMark `json:"soundMark"`
 }
 
-func Translator(platform, word, SorLang, TarLang string) (TResponse, error) {
+func Done(platform, word, SorLang, TarLang string) (TResponse, error) {
 	var resp TResponse
 	switch platform {
 	case "Youdao":
