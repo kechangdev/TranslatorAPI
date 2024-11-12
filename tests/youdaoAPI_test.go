@@ -1,7 +1,15 @@
 package tests
 
-import "TranslatorAPI"
+import (
+	"TranslatorAPI"
+	"fmt"
+	"testing"
+)
 
-func YoudaoAPI(word string) (TranslatorAPI.TResponse, error) {
-	return TranslatorAPI.Translator("Youdao", word, "auto", "zh-CHS")
+func TestYoudaoAPI(t *testing.T) {
+	resq, err := TranslatorAPI.Translator("Youdao", "test", "auto", "zh-CHS")
+	if err != nil {
+		return
+	}
+	fmt.Println(resq)
 }

@@ -1,7 +1,17 @@
 package tests
 
-import "TranslatorAPI"
+import (
+	"TranslatorAPI"
+	"fmt"
+	"testing"
+)
 
-func CaiyunAPI(word string) (TranslatorAPI.TResponse, error) {
-	return TranslatorAPI.Translator("Caiyun", word, "ZN", "US")
+var word = "test"
+
+func TestCaiyunAPI(t *testing.T) {
+	resq, err := TranslatorAPI.Translator("Caiyun", word, "ZN", "US")
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(resq)
 }
