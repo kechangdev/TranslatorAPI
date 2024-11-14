@@ -1,9 +1,0 @@
-{
-  "Youdao": {
-    "appKey": "your_app_id_here",
-    "appSecret": "your_app_key_here"
-  },
-  "other": {
-    // 其他配置项
-  }
-}

@@ -1,7 +1,7 @@
-package services
+package translator
 
 import (
-	"TranslatorAPI/models"
+	"TranslatorAPI/internal/models/platform/caiyun"
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
@@ -9,9 +9,9 @@ import (
 	"net/http"
 )
 
-func CaiyunSendRequests(word, sourceLang, targetLang string) (models.CaiyunResponse, error) {
+func CaiyunSendRequests(word, from, to string) (caiyun.Response, error) {
 	client := &http.Client{}
-	request := models.CaiyunRequest{TransType: "en2zh", Source: word}
+	request := caiyun.Request{TransType: "en2zh", Source: word}
 	buf, err := json.Marshal(request)
 	if err != nil {
 		log.Fatal(err)
@@ -51,7 +51,7 @@ func CaiyunSendRequests(word, sourceLang, targetLang string) (models.CaiyunRespo
 	if resp.StatusCode != 200 {
 		log.Fatal("bad StatusCode:", resp.StatusCode, "body", string(bodyText))
 	}
-	var dictResponse models.CaiyunResponse
+	var dictResponse caiyun.Response
 	err = json.Unmarshal(bodyText, &dictResponse)
 	if err != nil {
 		log.Fatal(err)

@@ -1,6 +1,7 @@
-package models
+package caiyun
 
-type CaiyunResponse struct {
+// Response 彩云的回复
+type Response struct {
 	Rc   int `json:"rc"`
 	Wiki struct {
 		KnownInLaguages int `json:"known_in_laguages"`
